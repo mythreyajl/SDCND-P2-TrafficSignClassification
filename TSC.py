@@ -112,13 +112,13 @@ plt.show()
 # 3. Animation of images per class
 from matplotlib import animation
 import random
-
+"""
 fig = plt.figure(3, figsize=(5, 5))
 
 img = np.ndarray(shape=(32*7, 32*7, 3), dtype=np.uint8)
 im = plt.imshow(img)
 plt.axis("off")
-"""
+
 def random_img(*args):
     for key in np.unique(y_train):
         label_dict = image_classes[key]
@@ -135,9 +135,19 @@ anim = animation.FuncAnimation(fig, random_img, repeat=True)
 plt.show()
 """
 ############################################################################################################################################
+# Data Normalization
 X_train = utils.normalize_data(X_train)
 X_valid = utils.normalize_data(X_valid)
 X_test  = utils.normalize_data(X_test)
 
+############################################################################################################################################
+# Data Augmentation
+X_shifts, y_shifts = utils.random_translation(X_train, y_train, 5)
+X_scales, y_scales = utils.random_resize(X_train, y_train, [0.8, 1.2])
+X_rot, y_rot = utils.random_rotations(X_train, y_train, 15)
 
+X_aug = np.concatenate((X_train, X_shifts, X_scales, X_rot), axis=0)
+y_aug = np.concatenate((y_train, y_shifts, y_scales, y_rot), axis=0)
+print("dummy")
+############################################################################################################################################
 
