@@ -28,8 +28,8 @@ def normalize_data(data):
     op = []
     for d in data:
         gray = cv2.cvtColor(d, cv2.COLOR_RGB2GRAY)                
-        gray = (gray-128)/128
-        gray = brightness_normalization(gray, 1.0)
+        #gray = (gray-128)/128
+        #gray = brightness_normalization(gray, 1.0)
         gray = np.expand_dims(gray, axis=2)
         op.append(gray)
     return op
