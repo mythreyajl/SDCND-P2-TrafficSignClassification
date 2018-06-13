@@ -90,8 +90,12 @@ with open('./signnames.csv') as file:
 for x, y in zip(X_train, y_train):
     image_classes[y]['images'].append(x)
 
+max_count = 0
 for y in np.unique(y_train):
-    image_classes[y]['count'] = len(image_classes[y]['images'])
+    cnt = len(image_classes[y]['images'])
+    image_classes[y]['count'] = cnt
+    if cnt > max_count:
+        max_count = cnt
     img_array = np.asarray(image_classes[y]['images'])
     mean = np.mean(img_array, 0)
     image_classes[y]['mean_img'] = np.divide(mean.astype(float), 255.0)
@@ -141,13 +145,51 @@ X_valid = utils.normalize_data(X_valid)
 X_test  = utils.normalize_data(X_test)
 
 ############################################################################################################################################
-# Data Augmentation
-X_shifts, y_shifts = utils.random_translation(X_train, y_train, 5)
-X_scales, y_scales = utils.random_resize(X_train, y_train, [0.8, 1.2])
-X_rot, y_rot = utils.random_rotations(X_train, y_train, 15)
+# Data Augmentation with class balancing
+import math
+from random import sample
+cap = 800
+tot_items = 2000
+X_aug = []
+y_aug = []
+for key, val in dict(image_classes).items():
+    m = math.ceil(cap/val['count'])
+    im_list = utils.normalize_data(val['images'])[:]
+    aug_list = im_list
+    for c in range(0, m):
+        X_shifts = utils.random_translator(im_list, 5)
+        X_scales = utils.random_resizer(im_list, [0.8, 1.2])
+        X_rots = utils.random_rotator(im_list, 15)
+        aug_list += X_shifts
+        aug_list += X_scales
+        aug_list += X_rots
+    X_aug += sample(aug_list, tot_items)
+    y_aug += [key] * tot_items
 
-X_aug = np.concatenate((X_train, X_shifts, X_scales, X_rot), axis=0)
-y_aug = np.concatenate((y_train, y_shifts, y_scales, y_rot), axis=0)
 print("dummy")
-############################################################################################################################################
 
+############################################################################################################################################
+import os
+import os.path as osp
+
+dir_path = "./TrafficSignsTest"
+files = os.listdir(dir_path)
+in_the_wild = {}
+for file in files:
+    fp = osp.join(dir_path, file)
+    if osp.isfile(fp):
+        im = cv2.imread(fp)
+        ind = file.find('.')
+        key = int(file[:ind])
+        in_the_wild[key] = im
+
+X_in_the_wild = []
+y_in_the_wild = []
+for key, val in in_the_wild.items():
+    X = cv2.resize(val, (32, 32))
+    X_in_the_wild.append(X)
+    y_in_the_wild.append(key)
+
+X_in_the_wild = utils.normalize_data(X_in_the_wild)
+
+print("dimm!")
