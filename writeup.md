@@ -197,10 +197,7 @@ Comments on chosen images:
 
 #### 2. Performance on New Images
 
-Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
-
-Here are the results of the prediction:
-Subset performance: The model was able to correctly guess 4 among the 5 traffic signs, which gives an accuracy of 80%. This fades in comparison to the accuracy on the test set of 95.511%. 
+Subset performance: The model was able to correctly guess 4 among the 5 traffic signs, which gives an accuracy of 80%. This pales in comparison to the accuracy on the test set of 95.511%. 
 
 
 | Image			                              | Prediction	            					          | 
