@@ -154,7 +154,9 @@ The initial architecture was not big enough network to handle the Traffic Sign C
 The architecture was adjusted to have an additional convolution layer, bigger layer depth per convolution layer and and additional fully connected layer to gradually increase the ROI in the top end of the network considering the increased depth in the convolutional layers. The reason for this choice is that I noticed that the network wasn't accurate enough with vanilla LeNet and it was underfitting quite a bit. 
 * Which parameters were tuned? How were they adjusted and why?
 Several parameters were tuned. Network depth in the convolutional layers determined the size of the network. This was the first thing that was tuned. The learning rate was tuned to make gradually decrease loss while increasing accuracy.
+
 ![alt text][image6]
+
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem?
 - Convolutional layers were chosen in the front-end of the network. This is useful in extracting several features from the images while keeping the same weight for the convolutional filter layer. 
 - A ReLU was added after each layer to add non-linearities to the network which mimics the boundaries between the classes in the 32x32 dimensional space
@@ -174,9 +176,11 @@ The dataset has a lot of intraclass similarities. A lot of the signs have simila
 #### 1.Acquiring New Images
 
 I found several traffic signs on the web. As a preprocessing step, I cropped the images so that the relative aspect ratio between the final image and the traffic sign is reasonable enough to mimic the training set. A challenge with the internet images is that a lot of them contain watermarks which aren't present in the dataset presented to us. This might throw the classifier off on occasions. Also, this project attempts to build a classifier and not a detector which is a whole other undertaking involving regression on 3 values(bounding box center, width and height). Below is a collage of all images downloaded:
+
 ![alt_text][image7]
 
 Among those I chose the following as the five images for the test set.
+
 ![alt text][image8] 
 ![alt text][image9] 
 ![alt text][image10] 
