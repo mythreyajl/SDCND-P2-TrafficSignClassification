@@ -134,7 +134,7 @@ The submission describes how the model was trained by discussing what optimizer 
 * Optimizer - The Adam optimizer is used since this helps with decaying the learning rate naturally. 
 * Training operation - The Adam optimizer is used to calculate the descent required to minimize loss
 * Prediction - Prediction is the argmax of logits calculated by the network
-* Learning rate - 0.0007, Batch size - 128 and Epochs - 50: These numbers were decided following various experiments described in the following subsection
+* Learning rate - 0.0005, Batch size - 128 and Epochs - 50: These numbers were decided following various experiments described in the following subsection
 
 ##### Evaluation
 * Correct prediction - If the argmax of logits is the same as the one-hot encoded label for the image, the prediction is correct
@@ -142,9 +142,9 @@ The submission describes how the model was trained by discussing what optimizer 
 
 #### 5. Solution Approach
 My final model results were:
-* Training set accuracy   : 99.961%
-* Validation set accuracy : 97.755%
-* Test set accuracy of    : 95.732%
+* Training set accuracy   : 99.941%
+* Validation set accuracy : 97.506%
+* Test set accuracy of    : 95.511%
 
 I chose an iterative approach to the solution with the following justifications:
 * What was the first architecture that was tried and why was it chosen?
@@ -200,29 +200,30 @@ Comments on chosen images:
 Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
 Here are the results of the prediction:
-Subset performance: The model was able to correctly guess all the traffic signs among the 5, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set of 95.732%.
+Subset performance: The model was able to correctly guess 4 among the 5 traffic signs, which gives an accuracy of 80%. This fades in comparison to the accuracy on the test set of 95.511%. 
 
 
 | Image			                              | Prediction	            					          | 
 | ------------------------------------- | ------------------------------------- | 
 | Speed limit (30km/h)      		          | Speed limit (30km/h)  									       | 
 | Speed limit (70km/h)    			           | Speed limit (70km/h) 										       |
-| No passing					                       | No passing											                 |
+| No passing					                       | End of no passing											          |
 | Right-of-way at the next intersection | Right-of-way at the next intersection	|
 | No entry 			                          | No entry       							                |
 
-Overall performance on the 43 downloaded images: 72.093% accurate. One reason for the inaccuracies is that many of the images that I downloaded are 'computer generated model images' which don't look anything like real images. This might have thrown off the classifier, however I believe the performance on real world images might be better.
+
+Overall performance on the 43 downloaded images: 60.465% accurate. One reason for the inaccuracies is that many of the images that I downloaded are 'computer generated model images' which don't look anything like real images. This might have thrown off the classifier, however I believe the performance on real world images might be better.
 
 #### 3. Model Certainty - Softmax Probabilities
 These are the Softmax probabilities obtained for the test predictions. From the below table, it is clear that the model is very certain about the predictions for these classes.
 
 | Input class | Top-5 Classes       | Softmax |
 | --- | --- | --- |
-| 1  | 1  2  6  7  0 | 1.00000e+00   1.30809e-25   9.65468e-27   1.14668e-29   1.74684e-32 |
-| 4  | 4  1  0  14 8 | 1.00000e+00   1.08221e-18   7.93542e-19   2.07393e-21   5.76293e-23 |
-| 9  | 9  41 32 29 3 | 1.00000e+00   1.37539e-08   9.07039e-11   1.05558e-12   8.89667e-13 |
-| 11 | 11 0  1  2  3 | 1.            0.            0.            0.            0.          |
-| 17 | 17 0  1  2  3 | 1.            0.            0.            0.            0.          |
+| 1  | 1  5  2  0  6  | 1.00000e+00   3.58568e-14   5.69922e-15   4.61392e-16   4.56762e-16 |
+| 4  | 4  0  29 24 1  | 1.00000e+00   5.41072e-08   2.08294e-10   7.76585e-11   5.15568e-11 |
+| 9  | 41 42 3  19 9  | 0.32976       0.2326        0.17779       0.13344       0.07231     |
+| 11 | 11 21 31 2  30 | 1.00000e+00   1.37943e-14   5.41940e-18   4.02765e-18   3.55944e-18 |
+| 17 | 17 32 29  0 42 | 1.00000e+00   2.96605e-16   3.16787e-17   9.17878e-19   4.55823e-20 |
 
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
