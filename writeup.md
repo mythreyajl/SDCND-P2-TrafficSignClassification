@@ -76,6 +76,7 @@ The steps I took for preprocessing are as follows:
 * Converted from RGB to Grayscale (Y of YUV) using OpenCV - The reason being, often times, most of the information is contained in the intensity (Y) channel of an image. The U and V channels, athough very informative, doesn't help as much in recognition as the intensity channel does. Further, due to this, memory, network size and CPU usage reduces significantly due to eliminating the other two channels
 * Normalized the image by subtracting 128 and dividing by 128 - the mean value of an image pixel is 128 for an 8-bit image. By doing this operation, the image is guaranteed to be in the interval [-1. 1] which effectively normalizes the data to bring all pixels of all images to the same frame of reference.
 * Brightness normalization -  In many cases, the image contrast and brightness is poor. This step attempts to fix the range of intensities in an image.
+
 ![alt text][image4]
 
 #### 2. Data Augmentation:
