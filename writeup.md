@@ -27,7 +27,8 @@ The goals / steps of this project are the following:
 [image10]: ./submission_images/9.jpg  "Test Image Class 9  - No passing"
 [image11]: ./submission_images/11.jpg "Test Image Class 11 - Right-of-way at the next intersection"
 [image12]: ./submission_images/17.jpg "Test Image Class 17 - No entry"
-[image13]: ./submission_images/intermediate_output_visualization.png "Network output at conv1 and conv2"
+[image13]: ./submission_images/intermediate_output_visualization_conv1.png "Network output at conv1"
+[image14]: ./submission_images/intermediate_output_visualization_conv2.png "Network output at conv2"
 
 ## Rubric Requirements:
 ### Below are the requirements according to the [rubric file](https://review.udacity.com/#!/rubrics/481/view)
@@ -176,8 +177,11 @@ I found several traffic signs on the web. As a preprocessing step, I cropped the
 ![alt_text][image7]
 
 Among those I chose the following as the five images for the test set.
-![alt text][image8] ![alt text][image9] ![alt text][image10] 
-![alt text][image11] ![alt text][image12]
+![alt text][image8] 
+![alt text][image9] 
+![alt text][image10] 
+![alt text][image11] 
+![alt text][image12]
 
 Comments on chosen images:
 * Image 1 - Class 1  - Speed limit (30km/h) - Class 1 and Class 4 are very similar and could be challenging
@@ -220,5 +224,6 @@ These are the Softmax probabilities obtained for the test predictions. From the 
 The conv1 and conv2 layers have the following outputs as shown in the image below. The first layer shows that the outputs are fairly similar to the traffic sign provided to the input. However, the second layer seems to have broken it down into finer features.
 
 ![alt text][image13]
+![alt text][image14]
 
 
