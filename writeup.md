@@ -217,13 +217,13 @@ Overall performance on the 43 downloaded images: 60.465% accurate. One reason fo
 #### 3. Model Certainty - Softmax Probabilities
 These are the Softmax probabilities obtained for the test predictions. From the below table, it is clear that the model is very certain about the predictions for these classes.
 
-| Input class | Top-5 Classes       | Softmax |
-| --- | --- | --- |
-| 1  | 1  5  2  0  6  | 1.00000e+00   3.58568e-14   5.69922e-15   4.61392e-16   4.56762e-16 |
-| 4  | 4  0  29 24 1  | 1.00000e+00   5.41072e-08   2.08294e-10   7.76585e-11   5.15568e-11 |
-| 9  | 41 42 3  19 9  | 0.32976       0.2326        0.17779       0.13344       0.07231     |
-| 11 | 11 21 31 2  30 | 1.00000e+00   1.37943e-14   5.41940e-18   4.02765e-18   3.55944e-18 |
-| 17 | 17 32 29  0 42 | 1.00000e+00   2.96605e-16   3.16787e-17   9.17878e-19   4.55823e-20 |
+| Input class | c1 | c2 | c3 | c4 | c5 | SM1 | SM2 | SM3 | SM4 | SM5 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1  | 1  | 5  | 2  | 0  | 6  | 1.00000e+00  | 3.58568e-14 | 5.69922e-15 | 4.61392e-16 | 4.56762e-16 |
+| 4  | 4  | 0  | 29 | 24 | 1  | 1.00000e+00  | 5.41072e-08 | 2.08294e-10 | 7.76585e-11 | 5.15568e-11 |
+| 9  | 41 | 42 | 3  | 19 | 9  | 0.32976      | 0.2326      | 0.17779     | 0.13344     | 0.07231     |
+| 11 | 11 | 21 | 31 | 2  | 30 | 1.00000e+00  | 1.37943e-14 | 5.41940e-18 | 4.02765e-18 | 3.55944e-18 |
+| 17 | 17 | 32 | 29 | 0  | 42 | 1.00000e+00  | 2.96605e-16 | 3.16787e-17 | 9.17878e-19 | 4.55823e-20 |
 
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
